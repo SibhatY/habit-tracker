@@ -3,18 +3,19 @@ import React, { useState } from "react";
 const HabitForm = ({setHabits}) => {
 
     const [title, setTitle] = useState('');
-    const [progress, setProgress] = useState(0);
+    const [goal, setGoal] = useState(10);
 
     const submitHandling = (e) => {
         e.preventDefault();
 
         setHabits(prevHabits => [
             ...prevHabits,
-            {id: prevHabits.length+1, title, progress}
+            {id: prevHabits.length+1, title, daysTracked: 0, goal}
         ]);
         setTitle('');
-        setProgress(0);
+        setGoal(10);
     }
+    
 
     return (
 
@@ -22,9 +23,15 @@ const HabitForm = ({setHabits}) => {
 
             <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
 
-            <input type="number" placeholder="Progress %" value={progress} onChange={(e) => setProgress(e.target.value)} />
+            <select value={goal} onChange={(e) => setGoal(Number(e.target.value))}>
+                <option value={10}>10 days</option>
+                <option value={30}>30 days</option>
+                <option value={60}>60 days</option>
+            </select>
 
-            <button type="submit">Add a Habit</button>
+    
+
+            <button type="submit">Add Habit</button>
         </form>
     );
 };

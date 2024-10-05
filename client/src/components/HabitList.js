@@ -1,6 +1,28 @@
 import React from "react";
+import HabitItem from './HabitItem'
 
 const HabitList = ({habits, setHabits}) => {
+
+
+
+    const markDayHandling = (id) => {
+
+        setHabits(prevHabits => {
+
+            return prevHabits.map((habit) => {
+
+                if (habit.id === id) {
+
+                    return {...habit, daysTracked: habit.daysTracked + 1};
+                }
+                else {
+
+                    return habit;
+                }
+            });
+        });
+    };
+
 
 
     const deleteHandling = (id) => {
@@ -9,14 +31,17 @@ const HabitList = ({habits, setHabits}) => {
     };
 
     return (
-        <div>
+        <div className="habit-list">
 
             {habits.map((habit) => (
-                <div key={habit.id}>
-                    <h3>{habit.title}</h3>
-                    <p>Progress: {habit.progress}%</p>
-                    <button onClick={() => deleteHandling(habit.id)}>Delete</button>
-                </div>
+                
+                <HabitItem 
+                key={habit.id}
+                habit={habit}
+                onDelete={deleteHandling}
+                onMarkDay={markDayHandling}
+                />
+
             ))}
         </div>
     );
