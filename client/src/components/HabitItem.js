@@ -1,11 +1,19 @@
-const HabitItem = ({habit, onDelete, onMarkDay}) => {
+const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
 
     return (
 
         <div className="habit-item">
             <h3>{habit.title}</h3>
 
-            <p>Progress: {habit.daysTracked} / {habit.goal} days</p>
+            <p>Days Completed: {habit.daysTracked} / {habit.goal}</p>
+
+            <div
+                style={{
+                    width: `${calculateProgress(habit.daysTracked, habit.goal)}%`,
+                    backgroundColor: "green",
+                    height: "10px"
+                }}
+            />
 
             <button onClick={() => onMarkDay(habit.id)}>Mark Day as Complete</button>
 

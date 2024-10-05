@@ -30,6 +30,16 @@ const HabitList = ({habits, setHabits}) => {
         setHabits((prevHabits) => prevHabits.filter((habit) => habit.id !== id));
     };
 
+
+
+
+    const calculateProgress = (daysTracked, goal) => {
+
+        return (daysTracked / goal) * 100;
+    };
+
+
+
     return (
         <div className="habit-list">
 
@@ -40,6 +50,7 @@ const HabitList = ({habits, setHabits}) => {
                 habit={habit}
                 onDelete={deleteHandling}
                 onMarkDay={markDayHandling}
+                calculateProgress={calculateProgress}
                 />
 
             ))}
