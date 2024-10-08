@@ -17,12 +17,11 @@ const HabitList = ({habits, setHabits}) => {
 
                 if (habit.id === id) {
 
-                    return {...habit, daysTracked: habit.daysTracked + 1};
+                    if (habit.daysTracked < habit.goal) {
+                        return {...habit, daysTracked: habit.daysTracked + 1};
+                    }
                 }
-                else {
-
-                    return habit;
-                }
+                return habit;
             });
         });
     };
@@ -61,7 +60,7 @@ const HabitList = ({habits, setHabits}) => {
 
             <div className='add-habit-card' onClick={() => setIsAdding(true)}>
                 <FontAwesomeIcon icon={faPlus} size='2x' />
-                <p>Add New Habit</p>
+                
             </div>
 
             {isAdding && (
