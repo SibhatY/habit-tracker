@@ -1,3 +1,7 @@
+import React from "react";
+import '../styles/HabitItem.css';
+
+
 const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
 
     return (

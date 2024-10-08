@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useState} from 'react';
 import HabitItem from './HabitItem'
+import HabitForm from './HabitForm';
+import '../styles/HabitList.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 const HabitList = ({habits, setHabits}) => {
 
-
+    const [isAdding, setIsAdding] = useState(false);
 
     const markDayHandling = (id) => {
 
@@ -54,6 +58,16 @@ const HabitList = ({habits, setHabits}) => {
                 />
 
             ))}
+
+            <div className='add-habit-card' onClick={() => setIsAdding(true)}>
+                <FontAwesomeIcon icon={faPlus} size='2x' />
+                <p>Add New Habit</p>
+            </div>
+
+            {isAdding && (
+                <HabitForm setHabits={setHabits} onClose={() => setIsAdding(false)} />
+            )}
+
         </div>
     );
 };

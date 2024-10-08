@@ -35,12 +35,7 @@ const Dashboard = () => {
             <section>
                 <HabitList habits = {habits} setHabits={setHabits} />
             </section>
-            <section>
-                <HabitForm setHabits = {setHabits} />
-            </section>
-            {/* <section>
-                <ProgressTracker habits = {habits} />
-            </section> */}
+            
     
         </div>
     );
