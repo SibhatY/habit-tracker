@@ -11,15 +11,24 @@ const HabitList = ({habits, setHabits}) => {
 
     const markDayHandling = (id) => {
 
+        const today = new Date().toISOString().split("T")[0];
+
         setHabits(prevHabits => {
 
             return prevHabits.map((habit) => {
 
                 if (habit.id === id) {
 
-                    if (habit.daysTracked < habit.goal) {
-                        return {...habit, daysTracked: habit.daysTracked + 1};
+                    if (!habit.daysTracked.includes(today) && habit.daysTracked < habit.goal) {
+
+                        return {
+                            ...habit, daysTracked: [...habit.daysTracked, today],
+                        };
                     }
+
+                    // if (habit.daysTracked < habit.goal) {
+                    //     return {...habit, daysTracked: habit.daysTracked + 1};
+                    // }
                 }
                 return habit;
             });
@@ -36,9 +45,9 @@ const HabitList = ({habits, setHabits}) => {
 
 
 
-    const calculateProgress = (daysTracked, goal) => {
+    const calculateProgress = (daysTrackedLength, goal) => {
 
-        return (daysTracked / goal) * 100;
+        return (daysTrackedLength / goal) * 100;
     };
 
 

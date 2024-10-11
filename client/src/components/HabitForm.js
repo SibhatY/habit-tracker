@@ -9,9 +9,15 @@ const HabitForm = ({ setHabits, onClose }) => {
     const submitHandling = (e) => {
         e.preventDefault();
 
+        const today = new Date().toISOString().split("T")[0]
+        const endDate = new Date();
+
+        endDate.setDate(endDate.getDate() + goal);
+
+
         setHabits(prevHabits => [
             ...prevHabits,
-            { id: prevHabits.length + 1, title, daysTracked: 0, goal }
+            { id: prevHabits.length + 1, title, goal, daysTracked: [], startDate: today, endDate: endDate.toISOString().split("T")[0], }
         ]);
         setTitle('');
         setGoal(10);
@@ -27,6 +33,8 @@ const HabitForm = ({ setHabits, onClose }) => {
                 <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
 
                 <select value={goal} onChange={(e) => setGoal(Number(e.target.value))}>
+                    <option value={1}>1 day</option>
+                    <option value={2}>2 days</option>
                     <option value={10}>10 days</option>
                     <option value={30}>30 days</option>
                     <option value={60}>60 days</option>

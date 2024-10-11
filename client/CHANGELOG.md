@@ -10,3 +10,10 @@
 - Removal of "Days tracked" as a separate component and integrated visual progress with text
 ### Fixed
 - Tracking progress going past the limit chosen by the user.
+
+
+## [v0.2.0] - 2024-10-11
+### Overview
+- Major ongoing rework of tracking habits. Current method is too simple and many more variables need to be accounted for. Being able to limit the user to one mark a day, keeping track of date/time, allowing the user to still mark days despite missing previous days within the time-frame, and much more...
+### Added/Changed
+### Fixed
