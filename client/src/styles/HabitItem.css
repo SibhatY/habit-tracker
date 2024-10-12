@@ -36,3 +36,10 @@ span {
     1px 1px 0 #000;    
 
 }
+
+.streak-indicator {
+  font-size: 1.2em;
+  color: orange;
+  font-weight: bold;
+  margin-top: 5px;
+}

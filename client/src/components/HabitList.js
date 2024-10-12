@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import HabitItem from './HabitItem'
 import HabitForm from './HabitForm';
 import '../styles/HabitList.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPlus} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const HabitList = ({habits, setHabits}) => {
+const HabitList = ({ habits, setHabits }) => {
 
     const [isAdding, setIsAdding] = useState(false);
 
@@ -19,7 +19,13 @@ const HabitList = ({habits, setHabits}) => {
 
                 if (habit.id === id) {
 
-                    if (!habit.daysTracked.includes(today) && habit.daysTracked < habit.goal) {
+                    
+
+                    if (!Array.isArray(habit.daysTracked)) {
+                        habit.daysTracked = [];
+                    }
+
+                    if (!habit.daysTracked.includes(today) && habit.daysTracked.length < habit.goal) {
 
                         return {
                             ...habit, daysTracked: [...habit.daysTracked, today],
@@ -35,8 +41,7 @@ const HabitList = ({habits, setHabits}) => {
         });
     };
 
-
-
+    
     const deleteHandling = (id) => {
 
         setHabits((prevHabits) => prevHabits.filter((habit) => habit.id !== id));
@@ -56,20 +61,20 @@ const HabitList = ({habits, setHabits}) => {
         <div className="habit-list">
 
             {habits.map((habit) => (
-                
-                <HabitItem 
-                key={habit.id}
-                habit={habit}
-                onDelete={deleteHandling}
-                onMarkDay={markDayHandling}
-                calculateProgress={calculateProgress}
+
+                <HabitItem
+                    key={habit.id}
+                    habit={habit}
+                    onDelete={deleteHandling}
+                    onMarkDay={markDayHandling}
+                    calculateProgress={calculateProgress}
                 />
 
             ))}
 
             <div className='add-habit-card' onClick={() => setIsAdding(true)}>
                 <FontAwesomeIcon icon={faPlus} size='2x' />
-                
+
             </div>
 
             {isAdding && (

@@ -7,6 +7,44 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
     const progress = calculateProgress(habit.daysTracked.length, habit.goal);
 
 
+    const calcStreak = (habit) => {
+
+        if (habit.daysTracked.length === 0) {
+
+            return 0;
+        }
+      
+        const sortedDates = habit.daysTracked
+          .map(date => new Date(date))
+          .sort((a, b) => b - a);
+      
+        let streak = 1;
+
+        for (let i = 1; i < sortedDates.length; i++) {
+
+          const prevDate = sortedDates[i - 1];
+          const currDate = sortedDates[i];
+          
+          const diffDays = Math.floor((prevDate - currDate) / (1000 * 60 * 60 * 24));
+
+          if (diffDays === 1) {
+
+            streak++;
+
+          }
+          else if (diffDays > 1) {
+
+            streak = 0;
+            break;
+          }
+        }
+      
+        return streak;
+      };
+
+    const streakLength = calcStreak(habit);
+
+
 
     const getProgressColor = (progress) => {
 
@@ -29,12 +67,18 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
             <h3>{habit.title}</h3>
 
             <div
-            className="progress-badge"
-            style={{ background: getProgressColor(progress) }}
-            title={`Marked Dates: ${habit.daysTracked.join(", ")}`}
+                className="progress-badge"
+                style={{ background: getProgressColor(progress) }}
+                title={`Marked Dates: ${Array.isArray(habit.daysTracked) ? habit.daysTracked.join(", ") : ""}`}
             >
-                {habit.daysTracked.length} / {habit.goal} days
+                {Array.isArray(habit.daysTracked) ? habit.daysTracked.length : 0} / {habit.goal} days
             </div>
+
+            {streakLength > 1 && (
+                <div className="streak-indicator">
+                    🔥 {streakLength}-day streak!
+                </div>
+            )}
 
             <button onClick={() => onMarkDay(habit.id)}>Mark Day as Complete</button>
 
