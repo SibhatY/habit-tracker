@@ -16,14 +16,14 @@ const HabitForm = ({ setHabits, onClose }) => {
         }
 
         const today = new Date().toISOString().split("T")[0]
-        const endDate = new Date();
+        
 
-        endDate.setDate(endDate.getDate() + goal);
+        
 
 
         setHabits(prevHabits => [
             ...prevHabits,
-            { id: new Date().getTime(), title, goal, daysTracked: [], startDate: today, endDate: endDate.toISOString().split("T")[0], }
+            { id: new Date().getTime(), title, goal, daysTracked: [], startDate: today,}
         ]);
         setTitle('');
         setGoal(10);

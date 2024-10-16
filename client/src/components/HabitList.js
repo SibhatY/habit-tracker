@@ -4,10 +4,13 @@ import HabitForm from './HabitForm';
 import '../styles/HabitList.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import Modal from './Modal';
 
 const HabitList = ({ habits, setHabits }) => {
 
     const [isAdding, setIsAdding] = useState(false);
+
+    const closeModal = () => setIsAdding(false);
 
     const [simulatedDate, setSimulatedDate] = useState(new Date());
 
@@ -102,9 +105,11 @@ const HabitList = ({ habits, setHabits }) => {
 
             </div>
 
-            {isAdding && (
-                <HabitForm setHabits={setHabits} onClose={() => setIsAdding(false)} />
-            )}
+            <Modal isOpen={isAdding} onClose={closeModal}>
+                <HabitForm setHabits={setHabits} onClose={closeModal} />
+            </Modal>
+
+            
 
         </div>
     );

@@ -16,27 +16,28 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
       
         const sortedDates = habit.daysTracked
           .map(date => new Date(date))
-          .sort((a, b) => b - a);
+          .sort((a, b) => a - b);
       
         let currentStreak = 1;
-        let maxStreak = 1;
+        
 
         for (let i = 1; i < sortedDates.length; i++) {
 
           const prevDate = sortedDates[i - 1];
           const currDate = sortedDates[i];
           
-          const diffDays = Math.floor((prevDate - currDate) / (1000 * 60 * 60 * 24));
+          const diffDays = Math.floor((currDate - prevDate) / (1000 * 60 * 60 * 24));
 
           if (diffDays === 1) {
 
             currentStreak++;
-            maxStreak = Math.max(maxStreak, currentStreak);
+
 
           }
           else {
-
+            
             currentStreak = 1;
+            
           }
         }
       
@@ -75,11 +76,11 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
                 {Array.isArray(habit.daysTracked) ? habit.daysTracked.length : 0} / {habit.goal} days
             </div>
 
-            {currentStreak > 1 && (
+            {currentStreak > 1 ? (
                 <div className="streak-indicator">
                     🔥 {currentStreak}-day streak!
                 </div>
-            )}
+            ) : null}
 
             <button onClick={() => onMarkDay(habit.id)}>Mark Day as Complete</button>
 

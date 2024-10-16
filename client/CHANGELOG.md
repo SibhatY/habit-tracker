@@ -37,3 +37,12 @@
 - Added validation to prevent user from creating a habit with no title/text.
 ### Fixed
 - calculating progress previously had a risk of dividing by zero, a safety check was added.
+
+
+## [v0.5.0] - 2024-16-08
+### Overview
+- Due to the allowance of skipping days to encourage users to be able to finish tasks that they set for themselves despite "skipping" days or setbacks, tracking an "endDate" based on the chosen goal is not useful anymore since the actual end date is not fixed anymore. May be reintegrated in the future to show statistics but not a necessary feature I want right now.
+### Added/Changed
+ - Replacing the "Add Habit" form with a modal. Allows for only one form to be open at a time and cleans up the look of the app.
+### Fixed
+- Issue with streak not tracking after breaking a previous streak.
