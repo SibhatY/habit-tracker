@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HabitItem from './HabitItem'
 import HabitForm from './HabitForm';
 import '../styles/HabitList.css';
@@ -9,9 +9,29 @@ const HabitList = ({ habits, setHabits }) => {
 
     const [isAdding, setIsAdding] = useState(false);
 
+    const [simulatedDate, setSimulatedDate] = useState(new Date());
+
+    useEffect(() => {
+        console.log(`Sim Date Updated: ${simulatedDate.toDateString()}`);
+    }, [simulatedDate]);
+
+
+    const simulateNextDay = () => {
+
+        setSimulatedDate(prevDate => {
+            const nextDate = new Date(prevDate);
+            nextDate.setDate(nextDate.getDate() + 1);
+            return nextDate;
+        });
+    };
+
+
+
+
     const markDayHandling = (id) => {
 
-        const today = new Date().toISOString().split("T")[0];
+        //const today = new Date().toISOString().split("T")[0];
+        const todaySim = simulatedDate.toISOString().split("T")[0];
 
         setHabits(prevHabits => {
 
@@ -19,16 +39,11 @@ const HabitList = ({ habits, setHabits }) => {
 
                 if (habit.id === id) {
 
-                    
 
-                    if (!Array.isArray(habit.daysTracked)) {
-                        habit.daysTracked = [];
-                    }
-
-                    if (!habit.daysTracked.includes(today) && habit.daysTracked.length < habit.goal) {
+                    if (!habit.daysTracked.includes(todaySim) && habit.daysTracked.length < habit.goal) {
 
                         return {
-                            ...habit, daysTracked: [...habit.daysTracked, today],
+                            ...habit, daysTracked: [...habit.daysTracked, todaySim],
                         };
                     }
 
@@ -41,7 +56,7 @@ const HabitList = ({ habits, setHabits }) => {
         });
     };
 
-    
+
     const deleteHandling = (id) => {
 
         setHabits((prevHabits) => prevHabits.filter((habit) => habit.id !== id));
@@ -52,6 +67,9 @@ const HabitList = ({ habits, setHabits }) => {
 
     const calculateProgress = (daysTrackedLength, goal) => {
 
+        if (goal === 0) {
+            return 0;
+        }
         return (daysTrackedLength / goal) * 100;
     };
 
@@ -59,6 +77,12 @@ const HabitList = ({ habits, setHabits }) => {
 
     return (
         <div className="habit-list">
+
+            <button onClick={simulateNextDay}>Simulate Next Day</button>
+            <p>Simulated Date: {simulatedDate.toDateString()}</p>
+
+            <button onClick={() => setSimulatedDate(new Date())}>Reset to Today</button>
+
 
             {habits.map((habit) => (
 
@@ -68,6 +92,7 @@ const HabitList = ({ habits, setHabits }) => {
                     onDelete={deleteHandling}
                     onMarkDay={markDayHandling}
                     calculateProgress={calculateProgress}
+                    simulatedDate={simulatedDate}
                 />
 
             ))}

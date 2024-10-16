@@ -9,6 +9,12 @@ const HabitForm = ({ setHabits, onClose }) => {
     const submitHandling = (e) => {
         e.preventDefault();
 
+        if (!title.trim()) {
+
+            alert("Title of habit cannot be empty!!");
+            return;
+        }
+
         const today = new Date().toISOString().split("T")[0]
         const endDate = new Date();
 
@@ -17,7 +23,7 @@ const HabitForm = ({ setHabits, onClose }) => {
 
         setHabits(prevHabits => [
             ...prevHabits,
-            { id: prevHabits.length + 1, title, goal, daysTracked: [], startDate: today, endDate: endDate.toISOString().split("T")[0], }
+            { id: new Date().getTime(), title, goal, daysTracked: [], startDate: today, endDate: endDate.toISOString().split("T")[0], }
         ]);
         setTitle('');
         setGoal(10);

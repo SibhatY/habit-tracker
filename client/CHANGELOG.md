@@ -22,3 +22,18 @@
 - Added local visual Streak Feature to motivate user to keep going!
 ### Fixed
 - Some issues with local browser storage and development changes breaking the app. Some double checking in code was added to allow user to bypass. Will work on separating developmental code with working code.
+
+
+## [v0.4.0] - 2024-15-08
+### Overview
+- Working on adding date simulation to work on features properly. Also cleaning up and altering some features.
+- Still struggling with streak properties
+- Realized that the "endDate" is set based on the goal, and is calculated assuming that the user will complete the habit everyday, but since skipping days is allowed it does not really have any use this way. 
+### Added/Changed
+- Simulate Date feature to skip to future days one by one to test the markDayHandling and streaks.
+    - Added button to skip date and text to express what the simulated date is.
+    - Added another button for resetting the simulated date .
+- changed id generation to actually be unique by using new date and time, might switch to uuid soon.
+- Added validation to prevent user from creating a habit with no title/text.
+### Fixed
+- calculating progress previously had a risk of dividing by zero, a safety check was added.
