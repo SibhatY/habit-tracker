@@ -46,3 +46,15 @@
  - Replacing the "Add Habit" form with a modal. Allows for only one form to be open at a time and cleans up the look of the app.
 ### Fixed
 - Issue with streak not tracking after breaking a previous streak.
+
+
+## [v0.5.1] - 2024-18-08
+### Overview
+- Focused on improving the visual layout and user experience of the dashboard and habit tracking system.
+### Added/Changed
+- Updated button styles for consistency
+Added/Moved a floating "+" button on the bottom right for easier habit creation access and cleanliness.
+- Designated Toolbar design for date simulation and resetting functions
+- Added horizontal scroll feature for titles that exceeded a certain amount of space
+### Fixed
+- Issue with text and indicator on habit card being able to increase the size of the card.

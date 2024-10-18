@@ -79,13 +79,18 @@ const HabitList = ({ habits, setHabits }) => {
 
 
     return (
+
+        <div className='dashboard-container'>
+
+            <div className='toolbar'>
+                <button className='btn' onClick={simulateNextDay}>Simulate Next Day</button>
+
+                <p className='simulated-date'>Simulated Date: {simulatedDate.toDateString()}</p>
+
+                <button className='btn' onClick={() => setSimulatedDate(new Date())}>Reset To Today</button>
+            </div>
+
         <div className="habit-list">
-
-            <button onClick={simulateNextDay}>Simulate Next Day</button>
-            <p>Simulated Date: {simulatedDate.toDateString()}</p>
-
-            <button onClick={() => setSimulatedDate(new Date())}>Reset to Today</button>
-
 
             {habits.map((habit) => (
 
@@ -99,6 +104,7 @@ const HabitList = ({ habits, setHabits }) => {
                 />
 
             ))}
+            </div>
 
             <div className='add-habit-card' onClick={() => setIsAdding(true)}>
                 <FontAwesomeIcon icon={faPlus} size='2x' />

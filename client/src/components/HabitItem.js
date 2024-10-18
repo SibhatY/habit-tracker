@@ -66,7 +66,7 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
     return (
 
         <div className="habit-item">
-            <h3>{habit.title}</h3>
+            <h3 className="habit-title">{habit.title}</h3>
 
             <div
                 className="progress-badge"
@@ -76,11 +76,11 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
                 {Array.isArray(habit.daysTracked) ? habit.daysTracked.length : 0} / {habit.goal} days
             </div>
 
-            {currentStreak > 1 ? (
+            {currentStreak > 1 && (
                 <div className="streak-indicator">
                     🔥 {currentStreak}-day streak!
                 </div>
-            ) : null}
+            )}
 
             <button onClick={() => onMarkDay(habit.id)}>Mark Day as Complete</button>
 
