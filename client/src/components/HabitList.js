@@ -14,6 +14,11 @@ const HabitList = ({ habits, setHabits }) => {
 
     const [simulatedDate, setSimulatedDate] = useState(new Date());
 
+    const [filter, setFilter] = useState('All');
+
+    const filteredHabits = filter === 'All' ? habits : habits.filter(habit => habit.category === filter);
+
+
     useEffect(() => {
         console.log(`Sim Date Updated: ${simulatedDate.toDateString()}`);
     }, [simulatedDate]);
@@ -90,20 +95,35 @@ const HabitList = ({ habits, setHabits }) => {
                 <button className='btn' onClick={() => setSimulatedDate(new Date())}>Reset To Today</button>
             </div>
 
-        <div className="habit-list">
+            <div className='category-filter'>
 
-            {habits.map((habit) => (
+                <label htmlFor='filter'>Category:</label>
 
-                <HabitItem
-                    key={habit.id}
-                    habit={habit}
-                    onDelete={deleteHandling}
-                    onMarkDay={markDayHandling}
-                    calculateProgress={calculateProgress}
-                    simulatedDate={simulatedDate}
-                />
+                <select id='filter' value={filter} onChange={(e) => setFilter(e.target.value)}>
 
-            ))}
+                    <option value="All">All</option>
+                    <option value="Health">Health</option>
+                    <option value="Work">Work</option>
+                    <option value="Study">Study</option>
+                    <option value="Personal">Personal</option>
+
+                </select>
+            </div>
+
+            <div className="habit-list">
+
+                {filteredHabits.map((habit) => (
+
+                    <HabitItem
+                        key={habit.id}
+                        habit={habit}
+                        onDelete={deleteHandling}
+                        onMarkDay={markDayHandling}
+                        calculateProgress={calculateProgress}
+                        simulatedDate={simulatedDate}
+                    />
+
+                ))}
             </div>
 
             <div className='add-habit-card' onClick={() => setIsAdding(true)}>
@@ -115,7 +135,7 @@ const HabitList = ({ habits, setHabits }) => {
                 <HabitForm setHabits={setHabits} onClose={closeModal} />
             </Modal>
 
-            
+
 
         </div>
     );

@@ -6,6 +6,9 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
 
     const progress = calculateProgress(habit.daysTracked.length, habit.goal);
 
+    const getCategoryClass = (category) => {
+        return `category-tag ${category}`;
+    };
 
     const calcStreak = (habit) => {
 
@@ -66,6 +69,8 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
     return (
 
         <div className="habit-item">
+
+            <span className={getCategoryClass(habit.category)}>{habit.category}</span>
             <h3 className="habit-title">{habit.title}</h3>
 
             <div

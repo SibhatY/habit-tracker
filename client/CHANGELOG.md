@@ -58,3 +58,27 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 - Added horizontal scroll feature for titles that exceeded a certain amount of space
 ### Fixed
 - Issue with text and indicator on habit card being able to increase the size of the card.
+
+
+## [v0.5.5] - 2024-10-21
+### Overview
+- New Feature: Habit Categories!
+    - When creating a habit card, have the option to choose a category that resembles the type of task you created.
+- Clean up and visual changes of other parts of the app as well.
+
+### Added/Changed
+- Addition of 4 different categories for a habit (Health, Work, Study, Personal).
+    - Addition of dropdown filter by categories to see specific habits.
+
+### Fixed
+
+
+
+## [v0.6.0] - 2024-10-30
+### Overview
+- Splitting up progress for cleaner changelog
+
+### Added/Changed
+
+
+### Fixed

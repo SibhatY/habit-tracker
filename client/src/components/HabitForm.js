@@ -5,6 +5,7 @@ const HabitForm = ({ setHabits, onClose }) => {
 
     const [title, setTitle] = useState('');
     const [goal, setGoal] = useState(10);
+    const [category, setCategory] = useState('Health');
 
     const submitHandling = (e) => {
         e.preventDefault();
@@ -23,10 +24,11 @@ const HabitForm = ({ setHabits, onClose }) => {
 
         setHabits(prevHabits => [
             ...prevHabits,
-            { id: new Date().getTime(), title, goal, daysTracked: [], startDate: today,}
+            { id: new Date().getTime(), title, goal, category, daysTracked: [], startDate: today,}
         ]);
         setTitle('');
         setGoal(10);
+        setCategory('Health');
         onClose();
     }
 
@@ -46,6 +48,12 @@ const HabitForm = ({ setHabits, onClose }) => {
                     <option value={60}>60 days</option>
                 </select>
 
+                <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                    <option value="Health">Health</option>
+                    <option value="Work">Work</option>
+                    <option value="Study">Study</option>
+                    <option value="Personal">Personal</option>
+                </select>
 
 
                 <button type="submit">Add Habit</button>
