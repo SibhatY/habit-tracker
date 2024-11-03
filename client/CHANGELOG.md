@@ -74,11 +74,12 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 
 
 
-## [v0.6.0] - 2024-10-30
+## [v0.5.8] - 2024-11-03
 ### Overview
 - Splitting up progress for cleaner changelog
-
+- Redefining "Dashboard" to a "HabitsPage" to have the current page solely be dedicated to habits.
+- Preparing app for new page to display analytics and information about the users habits.
 ### Added/Changed
-
-
+- Reintroduction of "Completion dates" so app can keep track of when user finished a habit
+- Introduction of habit card visual changes when a user finishes a habit. Now marks the habit as completed. (Working on dismissing the habit once completed)
 ### Fixed

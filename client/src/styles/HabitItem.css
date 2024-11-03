@@ -9,6 +9,7 @@
   width: 100%;
   min-height: 250px;
   position: relative;
+  transition: background-color 0.3s, opacity 0.3s;
 }
 
 
@@ -30,7 +31,7 @@
   border-radius: 50px;
   font-weight: bold;
   font-size: 1em;
-  margin: 15px 0;
+  margin: 15px auto;
   width: 100px;
   text-align: center;
   transition: background 0.5s ease;
@@ -52,6 +53,11 @@
   transition: opacity 0.3s ease;
   position: absolute;
   bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  opacity: 0;
+  white-space: nowrap;
 }
 
 
@@ -63,4 +69,41 @@
 .streak-indicator.hidden {
 
   opacity: 0;
+}
+
+
+.habit-title.completed {
+  color: #4CAF50;
+}
+
+.completed-label {
+  font-style: italic;
+  color: #888;
+}
+
+.habit-item.completed {
+  background-color: #444;
+  color: #ccc;
+  opacity: 0.6;
+}
+
+.habit-item.completed .completed-label {
+
+  font-size: 1.2em;
+  color: #FFD700;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.habit-item.completed .progress-badge,
+.habit-item.completed .streak-indicator,
+.habit-item.completed button {
+  display: none;
+}
+
+.remove-button.hidden {
+  display: none;
 }

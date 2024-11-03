@@ -45,15 +45,20 @@ const HabitList = ({ habits, setHabits }) => {
 
             return prevHabits.map((habit) => {
 
-                if (habit.id === id) {
+                if (habit.id === id && !habit.completed) {
 
+                    let updatedHabit = {...habit};
 
                     if (!habit.daysTracked.includes(todaySim) && habit.daysTracked.length < habit.goal) {
 
-                        return {
-                            ...habit, daysTracked: [...habit.daysTracked, todaySim],
-                        };
+                        updatedHabit.daysTracked = [...habit.daysTracked, todaySim];
                     }
+                    if (updatedHabit.daysTracked.length === habit.goal) {
+                        updatedHabit.completed = true;
+                        updatedHabit.completedOn = todaySim;
+                    }
+
+                        return updatedHabit;
 
                     // if (habit.daysTracked < habit.goal) {
                     //     return {...habit, daysTracked: habit.daysTracked + 1};
@@ -85,7 +90,7 @@ const HabitList = ({ habits, setHabits }) => {
 
     return (
 
-        <div className='dashboard-container'>
+        <div className='habitspage-container'>
 
             <div className='toolbar'>
                 <button className='btn' onClick={simulateNextDay}>Simulate Next Day</button>

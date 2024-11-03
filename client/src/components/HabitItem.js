@@ -16,36 +16,36 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
 
             return 0;
         }
-      
+
         const sortedDates = habit.daysTracked
-          .map(date => new Date(date))
-          .sort((a, b) => a - b);
-      
+            .map(date => new Date(date))
+            .sort((a, b) => a - b);
+
         let currentStreak = 1;
-        
+
 
         for (let i = 1; i < sortedDates.length; i++) {
 
-          const prevDate = sortedDates[i - 1];
-          const currDate = sortedDates[i];
-          
-          const diffDays = Math.floor((currDate - prevDate) / (1000 * 60 * 60 * 24));
+            const prevDate = sortedDates[i - 1];
+            const currDate = sortedDates[i];
 
-          if (diffDays === 1) {
+            const diffDays = Math.floor((currDate - prevDate) / (1000 * 60 * 60 * 24));
 
-            currentStreak++;
+            if (diffDays === 1) {
+
+                currentStreak++;
 
 
-          }
-          else {
-            
-            currentStreak = 1;
-            
-          }
+            }
+            else {
+
+                currentStreak = 1;
+
+            }
         }
-      
+
         return currentStreak;
-      };
+    };
 
     const currentStreak = calcStreak(habit);
 
@@ -68,30 +68,44 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
 
     return (
 
-        <div className="habit-item">
+        <div className={`habit-item ${habit.completed ? 'completed' : ''}`}>
 
             <span className={getCategoryClass(habit.category)}>{habit.category}</span>
+
             <h3 className="habit-title">{habit.title}</h3>
+            {habit.completed ? (
+                <div>
+                    <span className="completed-label">Completed!</span>
+                    <button className="remove-button" onClick={() => onDelete(habit.id)}>Dismiss</button>
+                </div>
+            ) : (
 
-            <div
-                className="progress-badge"
-                style={{ background: getProgressColor(progress) }}
-                title={`Marked Dates: ${Array.isArray(habit.daysTracked) ? habit.daysTracked.join(", ") : ""}`}
-            >
-                {Array.isArray(habit.daysTracked) ? habit.daysTracked.length : 0} / {habit.goal} days
-            </div>
+                <div>
+                    <div
+                        className="progress-badge"
+                        style={{ background: getProgressColor(progress) }}
+                        title={`Marked Dates: ${Array.isArray(habit.daysTracked) ? habit.daysTracked.join(", ") : ""}`}
+                    >
+                        {Array.isArray(habit.daysTracked) ? habit.daysTracked.length : 0} / {habit.goal} days
+                    </div>
 
-            {currentStreak > 1 && (
-                <div className="streak-indicator">
-                    🔥 {currentStreak}-day streak!
+                    {currentStreak > 1 && (
+                        <div className="streak-indicator">
+                            🔥 {currentStreak}-day streak!
+                        </div>
+                    )}
+
+                    <button onClick={() => onMarkDay(habit.id)}>Mark Day as Complete</button>
+
+
+                    <button onClick={() => onDelete(habit.id)}>Delete</button>
+
                 </div>
             )}
-
-            <button onClick={() => onMarkDay(habit.id)}>Mark Day as Complete</button>
-
-            <button onClick={() => onDelete(habit.id)}>Delete</button>
         </div>
     );
+
 };
+
 
 export default HabitItem;

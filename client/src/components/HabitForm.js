@@ -24,7 +24,7 @@ const HabitForm = ({ setHabits, onClose }) => {
 
         setHabits(prevHabits => [
             ...prevHabits,
-            { id: new Date().getTime(), title, goal, category, daysTracked: [], startDate: today,}
+            { id: new Date().getTime(), title, goal, category, daysTracked: [], startDate: today, completed: false, completedOn: null, }
         ]);
         setTitle('');
         setGoal(10);
