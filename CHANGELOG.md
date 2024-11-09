@@ -83,3 +83,19 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 - Reintroduction of "Completion dates" so app can keep track of when user finished a habit
 - Introduction of habit card visual changes when a user finishes a habit. Now marks the habit as completed. (Working on dismissing the habit once completed)
 ### Fixed
+
+
+## [v0.5.9] - 2024-11-09
+### Overview
+- Progress has been a bit slow recently, did not want to start on any major feature work before adding documentation and readme now that i have a good foundation, this includes a small feature of the toolbar as well as styling changes for cleanliness.
+- Full documentation for each file and full readme.
+- Still an issue with overlapping css on toolbar
+### Added/Changed
+- Altered the toolbar to be expandable and collapsible
+    - When clicking on the "Simulated Date" section, the "filter" section expands.
+- Styled the NavBar to be more visually appealing with a title and links to multiple pages of the app.
+- Documentation and comments.
+- Dashboard and Homepage css files.
+### Fixed
+- Issue with "dismiss" button not appearing after completing a habit card thus being unable to clear a card from the list.
+- Habit cards visually overlapping.

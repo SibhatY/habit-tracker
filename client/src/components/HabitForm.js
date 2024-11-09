@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import "../styles/HabitForm.css"
 
+
+/**
+ * This manages the form inputs for creating a new habit.
+ * It has all the input fields for the habit title, goal, and category, and it handles the form submission logic
+ * to add the habit to the global list of habits.
+ */
 const HabitForm = ({ setHabits, onClose }) => {
 
+    // This tracks the title of the habit
     const [title, setTitle] = useState('');
+
+    // This tracks the goal days for the habit
     const [goal, setGoal] = useState(10);
+
+    // This tracks the category of the habit
     const [category, setCategory] = useState('Health');
 
+    // Handles the form submission
     const submitHandling = (e) => {
         e.preventDefault();
 
@@ -16,17 +28,17 @@ const HabitForm = ({ setHabits, onClose }) => {
             return;
         }
 
+        // This gets today's date as the start date
         const today = new Date().toISOString().split("T")[0]
-        
-
-        
 
 
+        // Adds the new habit to the current list of habits
         setHabits(prevHabits => [
             ...prevHabits,
             { id: new Date().getTime(), title, goal, category, daysTracked: [], startDate: today, completed: false, completedOn: null, }
         ]);
-        setTitle('');
+
+        // This resets the form fields to the default values and closes the modal
         setGoal(10);
         setCategory('Health');
         onClose();

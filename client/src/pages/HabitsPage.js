@@ -3,15 +3,15 @@ import HabitList from "../components/HabitList";
 import HabitForm from "../components/HabitForm";
 
 /**
- * Habit Page component
- * 
- * The main hub where you are able to view habits
- *  
+ * This is the main container for displaying and managing habits.
+ * Initializes and maintains the state of habits by using the "local storage" (For now, until backend integration)
+ * This page renders the HabitList with the ability to modify the list of habits.
  */
 const HabitsPage = () => {
 
     
-    //To retrieve haibts from the local storage or init array
+    // Initialized the state with habits loaded from local storage,
+    // or start with an empty array
     const [habits, setHabits] = useState(() => {
 
         const savedHabits = localStorage.getItem("habits");
@@ -24,7 +24,7 @@ const HabitsPage = () => {
         return initHabits;
     });
 
-    //Updates the local storage every time habits change
+    // Updates the local storage every time habits change
     useEffect(() => {
         localStorage.setItem("habits", JSON.stringify(habits));
     }, [habits]);

@@ -66,19 +66,14 @@
   opacity: 1;
 }
 
-.streak-indicator.hidden {
-
-  opacity: 0;
-}
-
-
-.habit-title.completed {
-  color: #4CAF50;
-}
-
 .completed-label {
   font-style: italic;
   color: #888;
+  font-size: 1.4em;
+  text-shadow: 1px 1px 2px black;
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .habit-item.completed {
@@ -89,20 +84,29 @@
 
 .habit-item.completed .completed-label {
 
-  font-size: 1.2em;
-  color: #FFD700;
   font-weight: bold;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  color: #FFD700;
 }
 
-.habit-item.completed .progress-badge,
-.habit-item.completed .streak-indicator,
-.habit-item.completed button {
-  display: none;
+.remove-button {
+  background-color: #666;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.9em;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 10px;
 }
+
+
+.remove-button:hover {
+  background-color: #555;
+  color: #fd2222;
+}
+
 
 .remove-button.hidden {
   display: none;

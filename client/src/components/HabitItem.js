@@ -2,14 +2,22 @@ import React from "react";
 import '../styles/HabitItem.css';
 
 
+
+/**
+ * This renders a single habit item that includes the title, progress badge, the ability the mark progress or delete the habit entirely.
+ * Also displays the streak information and the coloring/style of the badge and card based on the status of completion.
+ */
 const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
 
+    // This calculates the progress for the progress badge
     const progress = calculateProgress(habit.daysTracked.length, habit.goal);
 
+    // This is a helper to apply specific styling based on category
     const getCategoryClass = (category) => {
         return `category-tag ${category}`;
     };
 
+    // This calculates the current streak of consecutive days
     const calcStreak = (habit) => {
 
         if (habit.daysTracked.length === 0) {
@@ -51,6 +59,7 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
 
 
 
+    // This determines the color of the progress badge based on completion percentage
     const getProgressColor = (progress) => {
 
         if (progress < 50) {
@@ -73,8 +82,9 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
             <span className={getCategoryClass(habit.category)}>{habit.category}</span>
 
             <h3 className="habit-title">{habit.title}</h3>
+
             {habit.completed ? (
-                <div>
+                <div style={{ textAlign: 'center' }}>
                     <span className="completed-label">Completed!</span>
                     <button className="remove-button" onClick={() => onDelete(habit.id)}>Dismiss</button>
                 </div>
