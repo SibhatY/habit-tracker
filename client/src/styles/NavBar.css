@@ -1,62 +1,110 @@
 nav {
-
-    padding : 0;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+  padding: 0;
+  background-color: rgb(44, 34, 49);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .navbar-container {
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
 }
 
 .navbar-title {
-    margin: 0;
-    font-size: 24px;
-    color: #007bff;
-
+  margin: 0;
+  font-size: 24px;
+  color: #f6b93b;
 }
 
 .navbar-title a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar-title a:hover {
-    color: #0056b3;
-    transform: scale(1.2);
+  color: #ffd700;
+  transform: scale(1.1);
 }
 
 .navbar-links {
-
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
 }
 
 .navbar-links li {
-
-    padding: 10px;
-    transition: background-color 0.3s;
-}
-
-.navbar-links li:hover {
-
-    background-color: #f0f0f0;
+  padding: 10px;
+  transition: background-color 0.3s;
 }
 
 .navbar-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
+  text-decoration: none;
+  color: #f0f0f0;
+  font-weight: 500;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #ffd700;
+  text-shadow: 0 0 8px #ffd700;
+}
+
+.simulation-controls {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  background-color: rgb(44, 34, 49);
+  padding: 10px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, bottom 0.3s ease;
+  transform: translateY(100%);
+}
+
+.date-display {
+  margin: 0 20px;
+  color: #f0f0f0;
+  font-size: 16px;
+}
+
+.simulation-toggle {
+  cursor: pointer;
+  color: #f0f0f0;
+  font-size: 16px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.simulation-toggle:hover {
+  color: #ffd700;
+}
+
+.icon-chevron {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

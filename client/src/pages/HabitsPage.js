@@ -7,15 +7,16 @@ import HabitForm from "../components/HabitForm";
  * Initializes and maintains the state of habits by using the "local storage" (For now, until backend integration)
  * This page renders the HabitList with the ability to modify the list of habits.
  */
-const HabitsPage = () => {
+const HabitsPage = ({ simulatedDate, setSimulatedDate, simulateNextDay }) => {
 
-    
+
+
     // Initialized the state with habits loaded from local storage,
     // or start with an empty array
     const [habits, setHabits] = useState(() => {
 
         const savedHabits = localStorage.getItem("habits");
-        
+
         let initHabits = [];
         if (savedHabits) {
 
@@ -33,10 +34,16 @@ const HabitsPage = () => {
         <div className="habits-collection">
 
             <section>
-                <HabitList habits = {habits} setHabits={setHabits} />
+                <HabitList
+                    habits={habits}
+                    setHabits={setHabits}
+                    simulatedDate={simulatedDate}
+                    setSimulatedDate={setSimulatedDate}
+                    simulateNextDay={simulateNextDay}
+                />
             </section>
-            
-    
+
+
         </div>
     );
 };

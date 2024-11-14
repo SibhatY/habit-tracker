@@ -1,7 +1,8 @@
 /**
  * HabitList.js
  * 
- * This manages the display and interaction with a list of habit tracking items. The component is handling the user interactions for adding, simulating, and deleting habits, as well as filtering the created habits based on categories (Just one for now). It contains an expanding and collapsing toolbar to show/hide filters.
+ * This manages the display and interaction with a list of habit tracking items.
+ * It allows adding habits via modal form, and deleting or marking days as completed for each habit.
  * 
  * Dependencies:
  * - React: For building the component using hooks for state and effects.
@@ -26,12 +27,11 @@ import Modal from './Modal';
 
 /**
  * This manages the list of habits, adding, simulating, deleting, and filtering.
- * Displays the UI for simulating the changing of days and the expanding/collapsing filter menu.
  */
-const HabitList = ({ habits, setHabits }) => {
+const HabitList = ({ habits, setHabits, simulatedDate}) => {
 
-    // The state that manages whether the toolbar is expanded or collapsed
-    const [isExpanded, setIsExpanded] = useState(false);
+    // // The state that manages whether the toolbar is expanded or collapsed
+    // const [isExpanded, setIsExpanded] = useState(false);
 
     // The state that manages if the add habit form is visible
     const [isAdding, setIsAdding] = useState(false);
@@ -39,8 +39,8 @@ const HabitList = ({ habits, setHabits }) => {
     // A function to close the habit form modal
     const closeModal = () => setIsAdding(false);
 
-    // The state for managing the currently simulated date
-    const [simulatedDate, setSimulatedDate] = useState(new Date());
+    // // The state for managing the currently simulated date
+    // const [simulatedDate, setSimulatedDate] = useState(new Date());
 
     // The state for managing the selected filter category
     const [filter, setFilter] = useState('All');
@@ -50,15 +50,15 @@ const HabitList = ({ habits, setHabits }) => {
 
 
 
-    // This handles simulating the next day
-    const simulateNextDay = (event) => {
-        event.stopPropagation();
-        setSimulatedDate(prevDate => {
-            const nextDate = new Date(prevDate);
-            nextDate.setDate(nextDate.getDate() + 1);
-            return nextDate;
-        });
-    };
+    // // This handles simulating the next day
+    // const simulateNextDay = (event) => {
+    //     event.stopPropagation();
+    //     setSimulatedDate(prevDate => {
+    //         const nextDate = new Date(prevDate);
+    //         nextDate.setDate(nextDate.getDate() + 1);
+    //         return nextDate;
+    //     });
+    // };
 
 
 
@@ -116,30 +116,7 @@ const HabitList = ({ habits, setHabits }) => {
 
         <div className='habitspage-container'>
 
-            <div className={`toolbar ${isExpanded ? 'expanded' : 'collapsed'}`} onClick={() => setIsExpanded(!isExpanded)}>
-                <button className='btn' onClick={simulateNextDay}>Simulate Next Day</button>
 
-                <p className='simulated-date'>Simulated Date: {simulatedDate.toDateString()}</p>
-
-                <button className='btn' onClick={(event) => { event.stopPropagation(); setSimulatedDate(new Date()); }}>Reset To Today</button>
-            </div>
-
-            {isExpanded && (
-                <div className='category-filter'>
-
-                    <label htmlFor='filter'>Category:</label>
-
-                    <select id='filter' value={filter} onChange={(e) => setFilter(e.target.value)}>
-
-                        <option value="All">All</option>
-                        <option value="Health">Health</option>
-                        <option value="Work">Work</option>
-                        <option value="Study">Study</option>
-                        <option value="Personal">Personal</option>
-
-                    </select>
-                </div>
-            )}
             <div className="habit-list">
 
                 {filteredHabits.map((habit) => (

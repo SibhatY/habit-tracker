@@ -99,3 +99,16 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 ### Fixed
 - Issue with "dismiss" button not appearing after completing a habit card thus being unable to clear a card from the list.
 - Habit cards visually overlapping.
+
+
+## [v0.6.0] - 2024-11-13
+### Overview
+- Major aesthetic and architectural updates to improve the UI and prepare for upcoming feature expansions.
+### Added/Changed
+- TEMPORARILY DISABLED FILTER FEATURE. Revamped version planned to return in next version.
+- Did not like how the toolbar looked and felt and wanted to make it look cleaner by shifting it to be within the navbar as a collapsible only when on the "Habits" page.
+    - Did this by moving the functionality to the parent component (App.js) to handle the simulation and using props to utilize it everywhere else.
+- The modal for adding a habit was re-stylized to fit aesthetic.
+- Styling of splash page and navbar, as well as small changes for visual appeal. Constant changes and edits will be made until a finalized theme is found.
+### Fixed
+- By removing the toolbar from the page itself, there is no longer any overlapping css on toolbar.

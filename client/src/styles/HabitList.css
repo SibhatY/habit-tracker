@@ -1,3 +1,12 @@
+.habitspage-container {
+
+    height: 100vh;
+    background: linear-gradient(to top, #4a3c55d0 , #2c2233);
+    color: #f0f0f0;
+    padding-top: 30px;
+}
+
+
 .habit-list {
 
     display: grid;
@@ -8,86 +17,11 @@
 }
 
 
-.toolbar, .category-filter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f5f5f5;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.toolbar:hover {
-    background-color: #e6e6e6 ;
-}
-
-.toolbar.collapsed {
-    
-    background-color: #e0e0e0;
-    cursor: pointer;
-}
-
-.toolbar.expanded {
-    background-color: #cccccc;
-    cursor: pointer;
-}
-
-.btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.simulated-date {
-    font-size: 14px;
-    color: #333;
-}
-
-
-
-.category-filter {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    width: 100%;
-}
-
-.category-filter label {
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.category-filter select {
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    outline: none;
-    cursor: pointer;
-}
-
-
-
 .add-habit-card {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #007bff;
+    background-color: #f6b93b;
     color: white;
     padding: 15px;
     border-radius: 50%;
@@ -100,12 +34,14 @@
 }
 
 .add-habit-card:hover {
-    background-color: #0056b3;
+    background-color: #ffd700;
+    transform: scale(1.05);
 }
 
 .add-habit-card svg {
     color: white;
     font-size: 1.5rem;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.6));
 }
 
 .category-tag {

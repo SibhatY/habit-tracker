@@ -8,18 +8,17 @@ import '../styles/Home.css';
  *
  */
 const Home = () => {
-    
+
     return (
 
         <div className='home'>
-            <h1>Splash Page</h1>
-            <p>Track Progress, Shape Character.</p>
-            <Link to="/dashboard">
-            <button>Get Started</button>
-            </Link>
-
-            <h2>WIP</h2>
-
+            <div className='content'>
+                <h1>Welcome to Virtua</h1>
+                <p>Track Progress, Shape Character.</p>
+                <Link to="/dashboard">
+                    <button className='start-button'>Get Started</button>
+                </Link>
+            </div>
         </div>
     );
 };
