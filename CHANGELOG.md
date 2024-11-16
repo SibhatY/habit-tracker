@@ -112,3 +112,15 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 - Styling of splash page and navbar, as well as small changes for visual appeal. Constant changes and edits will be made until a finalized theme is found.
 ### Fixed
 - By removing the toolbar from the page itself, there is no longer any overlapping css on toolbar.
+
+
+
+
+## [v0.6.1] - 2024-11-16
+### Overview
+- Improved Habit List UI by updating the visual elements.
+### Added/Changed
+- Re-introduced filter feature as a sticky card on the bottom left of "Habits" screen.
+- Aesthetic changes to the "Habits" page to match rest of the app, specifically the habit cards.
+### Fixed
+- Slight cutoff of habit cards on right side.

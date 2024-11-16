@@ -133,6 +133,16 @@ const HabitList = ({ habits, setHabits, simulatedDate}) => {
                 ))}
             </div>
 
+            <div className='filter-card' onClick={() => {}}> {}
+                <select value={filter} onChange={e => setFilter(e.target.value)} className='filter-select'>
+                    <option value="All">All Categories</option>
+                    <option value="Health">Health</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="Study">Study</option>
+                </select>
+            </div>
+
             <div className='add-habit-card' onClick={() => setIsAdding(true)}>
                 <FontAwesomeIcon icon={faPlus} size='2x' />
 

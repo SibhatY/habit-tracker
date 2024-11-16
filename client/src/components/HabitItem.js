@@ -1,5 +1,7 @@
 import React from "react";
 import '../styles/HabitItem.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -105,10 +107,10 @@ const HabitItem = ({ habit, onDelete, onMarkDay, calculateProgress }) => {
                         </div>
                     )}
 
-                    <button onClick={() => onMarkDay(habit.id)}>Mark Day as Complete</button>
+                    <button className="mark-day-button" onClick={() => onMarkDay(habit.id)}><FontAwesomeIcon icon={faCheckCircle}/>  Mark Day</button>
 
 
-                    <button onClick={() => onDelete(habit.id)}>Delete</button>
+                    <button className="delete-button" onClick={() => onDelete(habit.id)}><FontAwesomeIcon icon={faTrashAlt}/>Remove</button>
 
                 </div>
             )}
