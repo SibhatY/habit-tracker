@@ -48,6 +48,7 @@ const HabitForm = ({ setHabits, onClose }) => {
     return (
 
         <div className="habit-form">
+            <h2 className="form-title">Create Your Habit</h2>
             <form onSubmit={submitHandling}>
 
                 <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />

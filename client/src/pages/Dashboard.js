@@ -8,7 +8,9 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <h1>Dashboard</h1>
-            <h2>WIP</h2>
+            <p className="wip">
+                This section of the app is currently being built.
+            </p>
         </div>
     );
 };

@@ -1,4 +1,16 @@
-.dashboard h2 {
+.dashboard {
 
     text-align: center;
+    padding: 50px;
+}
+
+.wip {
+    font-size: 20px;
+    color: #555;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

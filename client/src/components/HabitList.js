@@ -118,8 +118,11 @@ const HabitList = ({ habits, setHabits, simulatedDate}) => {
 
 
             <div className="habit-list">
+                {filteredHabits.length > 0 ? (
+                    
+                
 
-                {filteredHabits.map((habit) => (
+                filteredHabits.map((habit) => (
 
                     <HabitItem
                         key={habit.id}
@@ -129,8 +132,12 @@ const HabitList = ({ habits, setHabits, simulatedDate}) => {
                         calculateProgress={calculateProgress}
                         simulatedDate={simulatedDate}
                     />
-
-                ))}
+                ))
+            ) : (
+                <div className='empty-habit-list'>
+                    <p>To add habits, click on the gold plus on the bottom corner!</p>
+                </div>
+            )}
             </div>
 
             <div className='filter-card' onClick={() => {}}> {}

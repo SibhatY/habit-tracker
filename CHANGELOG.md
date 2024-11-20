@@ -124,3 +124,16 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 - Aesthetic changes to the "Habits" page to match rest of the app, specifically the habit cards.
 ### Fixed
 - Slight cutoff of habit cards on right side.
+
+
+
+## [v0.6.2] - 2024-11-19
+### Overview
+- More aesthetic improvements with updates to fonts and branding. New placeholder text on "Habits" screen to guide users when no habits are created.
+### Added/Changed
+- Changed fonts everywhere in the app to improve visual appeal.
+- Changed the logo of the app to a laurel wreath to fit with a subtle ancient greek theme.
+- "Habits" screen: Added a placeholder text before any habit are created to direct user to create a habit.
+- Added title to modal for creating a habit to clarify its purpose.
+- Stylized dashboard placeholder to clarify WIP.
+### Fixed
