@@ -137,3 +137,11 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 - Added title to modal for creating a habit to clarify its purpose.
 - Stylized dashboard placeholder to clarify WIP.
 ### Fixed
+
+
+## [v0.6.3] - 2024-11-23
+### Overview
+- Starting on the server side of things, decided to go with node and express as well as MongoDB. originally was going to use flask but decided not to.
+### Added/Changed
+- Added initial files and .gitignore to prepare.
+### Fixed
