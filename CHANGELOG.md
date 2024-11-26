@@ -145,3 +145,13 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 ### Added/Changed
 - Added initial files and .gitignore to prepare.
 ### Fixed
+
+## [v0.6.4] - 2024-11-26
+### Overview
+- Established a backend functionality for user registration with MongoDB integration.
+### Added/Changed
+- Installed mongoose for mongoDB interaction.
+- Created new backend files like 'db.js' for database connection, 'User.js' for the user model, and 'users.js' for the user routes.
+- Updated 'app.js' to add database connection and routes.
+- Setup local MongoDB instance for development.
+### Fixed

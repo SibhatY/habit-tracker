@@ -8,7 +8,7 @@ Virtua is a personal project developed to enhance my programming skills and prof
 - React.js
 - Node.js
 - CSS
-- Planned: Python for backend API and MongoDB for database management
+- Planned: Node.js/Express for server backend and MongoDB for database management
 
 ## Installation
 To run Virtua locally, follow these steps:
@@ -50,6 +50,6 @@ These are some of the implementations that are planned for future versions of Vi
 - **Splash Page & Dashboard Completion:** Fully develop the splash page and dashboard to provide an overview of user habits and achievements.
 - **UI Improvement:** Enhance the UI to make it more visually appealing and professional.
 - **User Authentication:** Add user authentication to allow personal accounts and secure access to user data.
-- **Backend Integration:** Implement a Python-based backend API to handle processing and storage.
+- **Backend Integration:** Implement a Node.js backend API to handle processing and storage.
 - **Database:** Use MongoDB for consistent data storage, allowing user profiles and habit tracking through multiple sessions.
 
