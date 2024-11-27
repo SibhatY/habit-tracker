@@ -155,3 +155,15 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 - Updated 'app.js' to add database connection and routes.
 - Setup local MongoDB instance for development.
 ### Fixed
+
+
+## [v0.6.5] - 2024-11-26
+### Overview
+- Established a backend functionality for user login, authentication, and recognition.
+- Before further progress on backend, planning on MAJOR REFACTOR of frontend to shift from custom habits to pre-defined habits. While this will make possible habits more limited, it will make the ability to manage and analyze user data a lot easier. Also, make it possible to add more functions of habits, like frequency based on specific types of habits. I will try this out and hopefully make it work. May take some time.
+### Added/Changed
+- addition of "login" route for users
+- preparation of auth.js (for future use)
+- Installed and utilized bcryptjs for encryption of passwords.
+- Installed and utilized jsonwebtoken for authentication.
+### Fixed
