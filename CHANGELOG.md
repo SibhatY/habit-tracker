@@ -167,3 +167,15 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 - Installed and utilized bcryptjs for encryption of passwords.
 - Installed and utilized jsonwebtoken for authentication.
 ### Fixed
+
+
+
+## [v0.7.0] - 2024-12-06
+### Overview
+- Changes from user defined habits to predefined habits were simpler than anticipated for now, may readjust to optimize and clean up old code. Worked on creating, structuring and testing the backend for habits. creation of a database and CRUD operations for habits as well.
+### Added/Changed
+- Creation of predefined habits to be stored in a separate JS file, may change in the future, maybe jSON or database.
+- Creation of Habit.js to contain the habit model.
+- Creation of habits.js to contain the functionality of CRUD operations tied in with user id.
+- Adjustment and implementation of auth.js to authorize habits to specific users with JWT.
+### Fixed
