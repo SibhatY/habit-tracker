@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/HabitForm.css"
+import predefinedHabits from '../Data/predefinedHabits';
 
 
 /**
@@ -9,24 +10,21 @@ import "../styles/HabitForm.css"
  */
 const HabitForm = ({ setHabits, onClose }) => {
 
-    // This tracks the title of the habit
-    const [title, setTitle] = useState('');
+    const [selectedHabitId, setSelectedHabitId] = useState(predefinedHabits[0].id);
 
-    // This tracks the goal days for the habit
-    const [goal, setGoal] = useState(10);
+    const [selectedHabit, setSelectedHabit] = useState(predefinedHabits[0]);
 
-    // This tracks the category of the habit
-    const [category, setCategory] = useState('Health');
+    useEffect(() => {
+
+        setSelectedHabit(predefinedHabits.find(habit => habit.id === selectedHabitId));
+    }, [selectedHabitId]);
+
+
 
     // Handles the form submission
     const submitHandling = (e) => {
         e.preventDefault();
 
-        if (!title.trim()) {
-
-            alert("Title of habit cannot be empty!!");
-            return;
-        }
 
         // This gets today's date as the start date
         const today = new Date().toISOString().split("T")[0]
@@ -35,12 +33,16 @@ const HabitForm = ({ setHabits, onClose }) => {
         // Adds the new habit to the current list of habits
         setHabits(prevHabits => [
             ...prevHabits,
-            { id: new Date().getTime(), title, goal, category, daysTracked: [], startDate: today, completed: false, completedOn: null, }
+            {
+                ...selectedHabit,
+                id: new Date().getTime(),
+                daysTracked: [],
+                startDate: today,
+                completed: false,
+                completedOn: null,
+            }
         ]);
 
-        // This resets the form fields to the default values and closes the modal
-        setGoal(10);
-        setCategory('Health');
         onClose();
     }
 
@@ -48,26 +50,22 @@ const HabitForm = ({ setHabits, onClose }) => {
     return (
 
         <div className="habit-form">
-            <h2 className="form-title">Create Your Habit</h2>
+            <h2 className="form-title">Add a Habit</h2>
             <form onSubmit={submitHandling}>
 
-                <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-
-                <select value={goal} onChange={(e) => setGoal(Number(e.target.value))}>
-                    <option value={1}>1 day</option>
-                    <option value={2}>2 days</option>
-                    <option value={10}>10 days</option>
-                    <option value={30}>30 days</option>
-                    <option value={60}>60 days</option>
+                <select value={selectedHabitId} onChange={(e) => setSelectedHabitId(Number(e.target.value))}>
+                    {predefinedHabits.map(habit => (
+                        <option key={habit.id} value={habit.id}>
+                            {habit.title} - {habit.category}
+                        </option>
+                    ))}
                 </select>
 
-                <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                    <option value="Health">Health</option>
-                    <option value="Work">Work</option>
-                    <option value="Study">Study</option>
-                    <option value="Personal">Personal</option>
-                </select>
-
+                <div className="habit-details">
+                    <p><strong>Goal:</strong> Complete {selectedHabit.goal} times</p>
+                    <p><strong>Category:</strong> {selectedHabit.category}</p>
+                    <p>{selectedHabit.description}</p>
+                </div>
 
                 <button type="submit">Add Habit</button>
                 <button type="button" onClick={onClose}>Cancel</button>

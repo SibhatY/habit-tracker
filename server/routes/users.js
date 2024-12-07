@@ -25,23 +25,24 @@ router.post('/register', async (req, res) => {
 
 
 router.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+
 
     try {
-        
+        const { username, password } = req.body;
         // This checks for an existing user
         const user = await User.findOne({ username });
         if (!user) {
 
-            return res.status(400).json({msg: 'User does not exist' });
+            return res.status(400).json({ msg: 'User does not exist' });
         }
 
         const isMatching = await bcrypt.compare(password, user.password);
+
         if (!isMatching) {
-            return res.status(400).json({msg: 'Invalid password' });
+            return res.status(400).json({ msg: 'Invalid password' });
         }
 
-        const token = jwt.sign({id: user._id }, process.env.JWT_SECRET, {
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
             expiresIn: 3600
         });
 
