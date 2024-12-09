@@ -179,3 +179,13 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 - Creation of habits.js to contain the functionality of CRUD operations tied in with user id.
 - Adjustment and implementation of auth.js to authorize habits to specific users with JWT.
 ### Fixed
+
+
+## [v0.7.1] - 2024-12-08
+### Overview
+- Introduced user registration functionality. Integrated the front-end form with the back-end to allow new users to register successfully.
+### Added/Changed
+- Added SignUp component with API integration to register new users.
+- Error handling in the SignUp to show registration errors to the user.
+- Passwords are hashed before storage.
+### Fixed

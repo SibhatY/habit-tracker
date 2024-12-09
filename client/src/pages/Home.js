@@ -15,7 +15,7 @@ const Home = () => {
             <div className='content'>
                 <h1>Welcome to Virtua</h1>
                 <p>Track Progress, Shape Character.</p>
-                <Link to="/dashboard">
+                <Link to="/auth/signup">
                     <button className='start-button'>Get Started</button>
                 </Link>
             </div>
