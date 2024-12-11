@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/HabitForm.css"
-import predefinedHabits from '../Data/predefinedHabits';
+import predefinedHabits from '../data/predefinedHabits';
 
 
 /**

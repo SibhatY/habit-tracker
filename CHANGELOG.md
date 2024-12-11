@@ -189,3 +189,14 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 - Error handling in the SignUp to show registration errors to the user.
 - Passwords are hashed before storage.
 ### Fixed
+
+
+## [v0.7.2] - 2024-12-10
+### Overview
+- Introduced user Sign-In functionality. This completes the authentication flow that allows users to login with the credentials that were registered previously.
+### Added/Changed
+- Added SignIn component with API integration to authenticate users.
+- Error handling in the SignIn to show login errors.
+- Added a state passage from the SignUp screen to the SignIn screen that confirms a successful registration.
+- WIP but stored JWT in the "sessionStorage" for future session management after a successful login.
+### Fixed

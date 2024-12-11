@@ -14,6 +14,7 @@ import Dashboard from './pages/Dashboard';
 import HabitsPage from './pages/HabitsPage';
 import NavBar from './components/NavBar';
 import SignUp from './pages/auth/SignUp';
+import SignIn from './pages/auth/SignIn';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
           simulateNextDay={simulateNextDay}
         />} />
         <Route path='/auth/signup' element={<SignUp />} />
+        <Route path='/auth/signin' element={<SignIn />} />
       </Routes>
 
     </Router>

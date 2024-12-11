@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function SignUp() {
 
@@ -31,13 +31,12 @@ function SignUp() {
             }
             console.log('Signing up:', username, password);
             // On successful signup:
-            navigate('/home');
+            navigate('/auth/signin', {state: {fromRegistration: true}});
 
         } catch (error) {
             console.error('Signup error:', error.message);
             setError(error.message);
         }
-
     };
 
 
@@ -55,6 +54,7 @@ function SignUp() {
                 <button type="submit">Sign Up</button>
             </form>
             <p>{error}</p>
+            <p>Already registered? <Link to="/auth/signin">Sign In</Link></p>
         </div>
     );
 }
