@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/NavBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '../contexts/AuthContext';
 
 
 /**
@@ -12,6 +13,8 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
  */
 const NavBar = ({ simulatedDate, setSimulatedDate, simulateNextDay}) => {
 
+    const {currentUser, logout} = useAuth();
+    const navigate = useNavigate();
     const location = useLocation();
     const showSim = location.pathname === '/habitspage';
     const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +27,11 @@ const NavBar = ({ simulatedDate, setSimulatedDate, simulateNextDay}) => {
         return date.toLocaleDateString('en-US', {
             weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
         });
+    }
+
+    const handleLogout = () => {
+        logout();
+        navigate('/');
     }
 
     return (
@@ -42,6 +50,11 @@ const NavBar = ({ simulatedDate, setSimulatedDate, simulateNextDay}) => {
                         <Link to="/habitspage">Habits</Link>
                         
                     </li>
+                    {currentUser && (
+                        <li>
+                        <button onClick={handleLogout}>Sign Out</button>
+                    </li>
+                    )}
                 </ul>
 
                 {showSim && (

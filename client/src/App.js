@@ -9,6 +9,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import HabitsPage from './pages/HabitsPage';
@@ -33,24 +34,24 @@ function App() {
 
   return (
     <Router>
-
-      <NavBar
-        simulateNextDay={simulateNextDay}
-        setSimulatedDate={setSimulatedDate}
-        simulatedDate={simulatedDate} />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/habitspage" element={<HabitsPage
-          simulatedDate={simulatedDate}
-          setSimulatedDate={setSimulatedDate}
+      <AuthProvider>
+        <NavBar
           simulateNextDay={simulateNextDay}
-        />} />
-        <Route path='/auth/signup' element={<SignUp />} />
-        <Route path='/auth/signin' element={<SignIn />} />
-      </Routes>
+          setSimulatedDate={setSimulatedDate}
+          simulatedDate={simulatedDate} />
 
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/habitspage" element={<HabitsPage
+            simulatedDate={simulatedDate}
+            setSimulatedDate={setSimulatedDate}
+            simulateNextDay={simulateNextDay}
+          />} />
+          <Route path='/auth/signup' element={<SignUp />} />
+          <Route path='/auth/signin' element={<SignIn />} />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }

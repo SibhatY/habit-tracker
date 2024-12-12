@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useAuth } from "../../contexts/AuthContext";
 
 
 function SignIn() {
@@ -9,6 +10,7 @@ function SignIn() {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
+    const {login} = useAuth();
 
     const [justRegistered, setJustRegistered] = useState(false);
 
@@ -49,7 +51,8 @@ function SignIn() {
             const result = await response.json();
             console.log('Login Successful', result);
 
-            sessionStorage.setItem('authToken', result.token);
+            login(result.token, {id: result.user.id, username: result.user.username});
+            
             navigate('/dashboard');
 
 

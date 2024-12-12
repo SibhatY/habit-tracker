@@ -200,3 +200,13 @@ Added/Moved a floating "+" button on the bottom right for easier habit creation 
 - Added a state passage from the SignUp screen to the SignIn screen that confirms a successful registration.
 - WIP but stored JWT in the "sessionStorage" for future session management after a successful login.
 ### Fixed
+
+
+## [v0.7.3] - 2024-12-12
+### Overview
+- Began introducing React Context to manage the global state. This makes it easier to manage the user's authentication status throughout the app when logged in.
+### Added/Changed
+- Created "AuthContext.js" to handle the user auth data and session management that will then be used throughout the app.
+- Added some touches like a sign-out button that appears on the navbar when a user is currently signed in.
+- Altered the "Home" component to be more dynamic. Now when the a user is signed in, their username will be attached to the "Welcome" phrase with a new slogan. The button will change from "Get Started" to "Track Habits" and take the user to the "Habits" page instead of the "Sign-up" page. (No styling has been done yet, for future versions).
+### Fixed
